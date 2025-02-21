@@ -1,0 +1,6 @@
+# dune init project stu
+# OCAMLPARAM: unset
+# Shared cache: enabled-except-user-rules
+# Shared cache location: /Users/tlim/.cache/dune/db
+# Workspace root: /Users/tlim/Desktop/cos510/assign/a2/stu
+# Auto-detected concurrency: 8

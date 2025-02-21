@@ -1,0 +1,4 @@
+(executable
+ (public_name cos510_a2)
+ (name main)
+ (libraries cos510_a2))

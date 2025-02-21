@@ -1,0 +1,11 @@
+(library
+ (name cos510_a2)
+ (libraries batteries ANSITerminal)
+ (modules Parser Lexer Span Ast Var Interp Input 
+    Console Translate Equality Driver)
+ (wrapped false))
+
+(ocamllex Lexer)
+
+(menhir
+ (modules Parser))

@@ -1,0 +1,10 @@
+(test
+ (name test)
+ (libraries cos510_a2 ounit2))
+
+(executable
+ (name check)
+ (public_name check)
+ (libraries cos510_a2))
+
+;
