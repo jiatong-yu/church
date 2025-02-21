@@ -1,0 +1,7 @@
+(lang dune 3.17)
+(name cos510_a2)
+(sections (lib .) (bin ../../bin) (doc ../../doc/cos510_a2))
+(files
+ (lib (META dune-package opam))
+ (bin (check cos510_a2))
+ (doc (README.md)))

@@ -1,6 +1,32 @@
-# dune init project stu
+# dune build
 # OCAMLPARAM: unset
 # Shared cache: enabled-except-user-rules
-# Shared cache location: /Users/tlim/.cache/dune/db
-# Workspace root: /Users/tlim/Desktop/cos510/assign/a2/stu
-# Auto-detected concurrency: 8
+# Shared cache location: /Users/jiatongyu/.cache/dune/db
+# Workspace root: /Users/jiatongyu/code/studenthandout_a2
+# Auto-detected concurrency: 12
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /Users/jiatongyu/.opam/defaut-switch/bin/ocamlc.opt -config > /var/folders/pz/bbfrzx796n95wx10d7ltpcyr0000gn/T/dune_c90f56_output
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamllex -q -o lib/Lexer.ml lib/Lexer.mll)
+$ (cd _build/.sandbox/a52def1f39705b8decd32046f3574234/default && /Users/jiatongyu/.opam/defaut-switch/bin/menhir lib/Parser.mly --base lib/Parser --infer-write-query lib/Parser__mock.ml.mock)
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -intf lib/Ast.mli) > _build/default/lib/.cos510_a2.objs/ast.intf.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -impl lib/Ast.ml) > _build/default/lib/.cos510_a2.objs/ast.impl.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -intf lib/Span.mli) > _build/default/lib/.cos510_a2.objs/span.intf.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -impl lib/Span.ml) > _build/default/lib/.cos510_a2.objs/span.impl.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -impl lib/Var.ml) > _build/default/lib/.cos510_a2.objs/var.impl.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -impl lib/Translate.ml) > _build/default/lib/.cos510_a2.objs/translate.impl.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -impl lib/Driver.ml) > _build/default/lib/.cos510_a2.objs/driver.impl.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -impl lib/Equality.ml) > _build/default/lib/.cos510_a2.objs/equality.impl.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -impl lib/Console.ml) > _build/default/lib/.cos510_a2.objs/console.impl.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -impl lib/Interp.ml) > _build/default/lib/.cos510_a2.objs/interp.impl.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -impl lib/Input.ml) > _build/default/lib/.cos510_a2.objs/input.impl.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -impl lib/Lexer.ml) > _build/default/lib/.cos510_a2.objs/lexer.impl.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -intf lib/Var.mli) > _build/default/lib/.cos510_a2.objs/var.intf.d
+$ (cd _build/default && /Users/jiatongyu/.opam/defaut-switch/bin/ocamldep.opt -modules -impl lib/Parser__mock.ml.mock) > _build/default/lib/.cos510_a2.objs/parser__mock.impl.d

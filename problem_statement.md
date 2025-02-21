@@ -11,7 +11,11 @@ To gain a deeper understanding of the lambda calculus, including operational sem
 To gain experience working with the implementation of a simple programming language in OCaml.
 
 ## Setup
-You will need to download OCaml for this assignment.
+- You will need to download OCaml for this assignment.
+- We have some EXTREMELY USEFUL lecture notes stored in "./lecture_notes/"
+    - Make sure to read through them
+    - They cover all the material we have covered in the first 3 weeks of class
+    - They also provide a brief explanation of the assignment
 
 ## Provided Files
 In the lib folder:
@@ -24,6 +28,60 @@ In the lib folder:
 In the test folder:
     - test.ml - contains a sample unit test and is where you will write additional unit tests
     - check.ml - runs the check() function from the driver.ml file. You can change the file name read from to check different programs.
+
+# Background
+## Free Variables and Substitution
+
+The set of free variables in a lambda calculus expression FV(e) is defined as follows.
+
+FV(x)     = {x}
+FV(\x.e)  = FV(e) - {x}
+FV(e1 e2) = FV(e1) U FV(e2)
+
+Let e0<e/x> be the substitution of e for variable x in e0.  It is defined as follows. 
+
+x<e/x>        = e
+y<e/x>        = y                    (y  x)
+(e1 e2)<e/x>  = (e1<e/x>) (e2<e/x>)
+(\x.e1)<e/x>  = \x.e1                
+(\y.e1)<e/x>  = \y.(e1<e/x>)         (y  x and y ∉ FV(e))
+(\y.e1)<e/x>  = \z.(e1<z/y><e/x>)    (y  x and for any z such that:
+ 							   z  x and
+                                      z ∉ FV(e1) and 
+   z ∉ FV(e))
+
+Lemma 1 (Totality of Substitution):  For all expressions e0 and e, and variables x, there exists e' such that e0<e/x> = e'.
+
+The proof is by induction on the structure of e0.  (Not required but a useful exercise.)
+
+## Alpha Equivalence
+
+Two terms are alpha-equivalent if they vary only in the names of their bound variables. You can think of this as “syntactic equality for the lambda calculus”:  terms are equivalent if they look equivalent (modulo renaming of bound variables).  We typically write e1 = e2 if e1 and e2 are alpha equivalent.  
+
+Alpha-equivalence is defined as follows (where FV(e) is the set of free variables in an expression e).
+
+-------- (a-var)
+x = x
+
+e1 = e1'        e2 = e2'
+---------------------------------(a-app)
+e1 e2 = e1' e2'
+
+e[z/x] = e'[z/y]        z  FV(e) U FV(e')
+--------------------------------------------------- (a-lam)
+\x.e = \y.e'
+
+Lemma 2 (Reflexivity of Alpha-Equivalence): 
+For all e, e = e.
+Lemma 3 (Transitivity of Alpha-Equivalence): 
+For all e1, e2, e3, if e1 = e2 and e2 = e3 then e1 = e3.
+Lemma 4 (Symmetry of Alpha-Equivalence): 
+For all e1, e2, if e1 = e2 then e2 = e1.
+
+The proofs are not required but you can do them as an exercise. 
+
+In the file equality.ml, alpha equality is implemented by the alphaEq function (iExp -> iExp -> bool). Read over this function and make sure you understand how it works.
+
 
 # Part 1: Beta Equivalence & Normal Order Reduction
 Definition (Beta-equivalence e1 = e2):  Let e -->* e' be full beta reduction, as defined below.  We say that two expressions e1 and e2 are beta-equivalent, written e1 = e2,  iff there exists e1' and e2' such that e1 -->* e1' and e2 -->* e2' and  e1' = e2'.
